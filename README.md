@@ -13,7 +13,7 @@ You can get a signed version of this extension from
 
 Once downloaded, move `Ether.lua` to your MoneyMoney Extensions folder.
 
-**Note:** This extension requires MoneyMoney Version XXX or newer.
+**Note:** This extension requires MoneyMoney **Version 2.2.18** or newer.
 
 ## Account Setup
 
