@@ -30,7 +30,7 @@ Add a new account (type "Ether").
 **Use your Ethererum adresses coma seperated as user name**  
 `0x661d60c7D102aDd7d4D209911CFE146f1a065B23, 0x535367bc1f62049dd1705bc872591f7da2a7d8d8` (example)
 
-**User your API-Key as password**  
+**Use your API-Key as password**  
 `ZDXKYDN63ZYM8HRZFF831XY6266FSA4NSB` (example)
 
 ![MoneyMoney screenshot account setup](screens/account-setup.png)
