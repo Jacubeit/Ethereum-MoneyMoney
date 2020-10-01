@@ -30,7 +30,7 @@
 
 
 WebBanking{
-  version = 0.1,
+  version = 0.2,
   description = "Include your Ether as cryptoportfolio in MoneyMoney by providing a Etheradresses (usernme, comma seperated) and etherscan-API-Key (Password)",
   services= { "Ethereum Classic" }
 }
@@ -91,10 +91,10 @@ function requestEtcPrice()
 end
 
 function requestEtcClQuantityForEtcAddress(etcAddress)
-  content = connection:request("GET", etherscanRequestUrl(etcAddress), {})
+  content = connection:request("GET", blockscoutRequestUrl(etcAddress), {})
   json = JSON(content)
 
-  return json:dictionary()["balance"]
+  return tonumber(json:dictionary()["result"]) / 1000000000000000000
 end
 
 
@@ -103,10 +103,10 @@ function cryptocompareRequestUrl()
   return "https://min-api.cryptocompare.com/data/price?fsym=ETC&tsyms=EUR,USD"
 end 
 
-function etherscanRequestUrl(etcAddress)
-  etcchain = "https://etcchain.com/api/v1/getAddressBalance?"
+function blockscoutRequestUrl(etcAddress)
+  blockscout = "https://blockscout.com/etc/mainnet/api?module=account&action=eth_get_balance"
   address = "&address=" .. etcAddress
 
-  return etcchain .. address
+  return blockscout .. address
 end
 
