@@ -30,7 +30,7 @@
 
 
 WebBanking{
-  version = 0.1,
+  version = 0.2,
   description = "Include your Ether as cryptoportfolio in MoneyMoney by providing a Etheradresses (usernme, comma seperated) and etherscan-API-Key (Password)",
   services= { "Ethereum" }
 }
