@@ -103,19 +103,18 @@ end
 
 -- Helper Functions
 function convertWeiToEth(wei)
-  return wei / 1000000000000000000 
+  return wei / 1000000000000000000
 end
 
 function cryptocompareRequestUrl()
   return "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR,USD"
-end 
+end
 
 function etherscanRequestUrl(ethAddress)
-  etherscanRoot = "https://api.etherscan.io/api?"
-  params = "&module=account&action=balance&tag=latest"
+  etherscanRoot = "https://api.etherscan.io/v2/api?"
+  params = "chainid=1&module=account&action=balance&tag=latest"
   address = "&address=" .. ethAddress
   apiKey = "&apikey=" .. etherscanApiKey
 
   return etherscanRoot .. params .. address .. apiKey
 end
-
