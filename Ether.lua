@@ -103,7 +103,7 @@ end
 
 -- Helper Functions
 function convertWeiToEth(wei)
-  return wei / 1000000000000000000
+  return tonumber(wei) / 1000000000000000000
 end
 
 function cryptocompareRequestUrl()
