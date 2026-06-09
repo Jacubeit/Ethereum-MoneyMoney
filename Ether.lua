@@ -1,6 +1,6 @@
 -- Inofficial Ethereum Extension for MoneyMoney
 -- Fetches Ether quantity for address via etherscan API
--- Fetches Ether price in EUR via cryptocompare API
+-- Fetches Ether price in EUR via coingecko API
 -- Returns cryptoassets as securities
 --
 -- Username: Ethereum Adresses comma seperated
@@ -30,7 +30,7 @@
 
 
 WebBanking{
-  version = 0.2,
+  version = 0.3,
   description = "Include your Ether as cryptoportfolio in MoneyMoney by providing a Etheradresses (usernme, comma seperated) and etherscan-API-Key (Password)",
   services= { "Ethereum" }
 }
@@ -72,9 +72,9 @@ function RefreshAccount (account, since)
     s[#s+1] = {
       name = address,
       currency = nil,
-      market = "cryptocompare",
+      market = "coingecko",
       quantity = ethQuantity,
-      price = prices["EUR"],
+      price = prices["eur"],
     }
   end
 
@@ -87,10 +87,10 @@ end
 
 -- Querry Functions
 function requestEthPrice()
-  content = connection:request("GET", cryptocompareRequestUrl(), {})
+  content = connection:request("GET", coingeckoRequestUrl(), {})
   json = JSON(content)
 
-  return json:dictionary()
+  return json:dictionary()["ethereum"]
 end
 
 function requestWeiQuantityForEthAddress(ethAddress)
@@ -106,8 +106,8 @@ function convertWeiToEth(wei)
   return tonumber(wei) / 1000000000000000000
 end
 
-function cryptocompareRequestUrl()
-  return "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR,USD"
+function coingeckoRequestUrl()
+  return "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=eur,usd"
 end
 
 function etherscanRequestUrl(ethAddress)
